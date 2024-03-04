@@ -1,0 +1,18 @@
+version: "3"
+services:
+    mssql:  
+        build:
+            context: /your-local-path/mssql-docker
+        environment:
+            SA_PASSWORD: "****" 
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: Express
+            MSSQL_COLLATION: Turkish_CS_AS
+            TZ: Europe/Istanbul            
+        volumes:
+            - /var/mssql/data:/var/opt/mssql/data 
+            - /var/mssql/log:/var/opt/mssql/log  
+            - /var/mssql/backup:/var/opt/mssql/backup
+        ports:
+            - "1433:1433"
+        restart: no
